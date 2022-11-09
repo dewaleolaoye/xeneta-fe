@@ -1,4 +1,16 @@
+import { useGetMarketRatesQuery, useGetPortsQuery } from 'store/api/market';
+
 function App() {
+  const { data: ports, isLoading } = useGetPortsQuery({});
+
+  const { data } = useGetMarketRatesQuery({
+    destination: 'NLRTM',
+    origin: 'CNSGH',
+  });
+
+  console.log(data, 'MARKET RATES');
+  console.log(ports, isLoading, 'PORTS');
+
   return (
     <div className="App">
       <h1>Hello World</h1>

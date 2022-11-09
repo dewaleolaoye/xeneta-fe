@@ -5,6 +5,7 @@ export interface Rate {
   high: number;
 }
 
-// export interface RatesRO {
-//   rates: Rate[];
-// }
+export interface RateDTO {
+  origin: string;
+  destination: string;
+}
