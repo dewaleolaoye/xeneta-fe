@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Rate, RateDTO } from 'interface';
+import { PortsRO, Rate, RateDTO } from 'interface';
 import { BASE_URL } from 'configs';
 
 export const marketApi = createApi({
@@ -23,7 +23,7 @@ export const marketApi = createApi({
 
     getPorts: builder.query({
       query: () => `/ports`,
-      transformResponse: (res: any) => res,
+      transformResponse: (res: PortsRO[]) => res,
     }),
   }),
 });

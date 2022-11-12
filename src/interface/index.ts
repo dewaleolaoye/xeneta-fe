@@ -9,3 +9,7 @@ export interface RateDTO {
   origin: string;
   destination: string;
 }
+export interface PortsRO {
+  code: string;
+  name: string;
+}

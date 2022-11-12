@@ -16,7 +16,8 @@ const theme = extendTheme(
     styles: {
       global: {
         'html, body': {
-          background: '#FBFBFB',
+          // background: '#eaecef',
+          background: 'rgb(252, 253, 253)',
           color: '#303131',
           scrollBehavior: 'smooth',
         },
