@@ -36,6 +36,7 @@ const Chart: FC<IChartProps> = ({ port }) => {
         description: resError?.data?.message,
         duration: 5000,
         isClosable: true,
+        position: 'bottom-right',
       });
   }, [error, resError?.data?.message, toast, port]);
 
