@@ -12,6 +12,7 @@ import {
 } from 'recharts';
 import { useGetMarketRatesQuery } from 'store/api/market';
 import { RateDTO } from 'interface';
+import { format, parseISO } from 'date-fns';
 
 interface IChartProps {
   port: RateDTO;
@@ -54,9 +55,14 @@ const Chart: FC<IChartProps> = ({ port }) => {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="day" />
+            <XAxis
+              dataKey="day"
+              tickFormatter={(value) => {
+                return format(parseISO(value), 'MMM. d, yyyy');
+              }}
+            />
 
-            <YAxis />
+            <YAxis tickFormatter={(value) => `$ ${value}`} />
 
             <Tooltip />
 
