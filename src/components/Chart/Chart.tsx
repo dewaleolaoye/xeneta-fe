@@ -42,45 +42,57 @@ const Chart: FC<IChartProps> = ({ port }) => {
   return (
     <>
       <Box height="500px" bg="#fff" width="100%">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis
-              dataKey="day"
-              tickFormatter={(value) => {
-                return format(parseISO(value), 'MMM. d, yyyy');
+        {data && (
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              width={500}
+              height={300}
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
               }}
-            />
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                dataKey="day"
+                tickFormatter={(value, i) => {
+                  return value && format(parseISO(value), 'MMM. d, yyyy');
+                }}
+              />
 
-            <YAxis tickFormatter={(value) => `$ ${value}`} />
+              <YAxis tickCount={5} tickFormatter={(value) => `$ ${value}`} />
 
-            <Tooltip />
+              <Tooltip />
 
-            <Legend />
+              <Legend />
 
-            <Line dot={false} strokeWidth="1" dataKey="high" stroke="#d80b0b" />
+              <Line
+                dot={false}
+                strokeWidth="1"
+                dataKey="high"
+                stroke="#d80b0b"
+              />
 
-            <Line
-              dot={false}
-              strokeWidth="3"
-              dataKey="mean"
-              stroke="#32ad61"
-              activeDot={{ r: 5 }}
-            />
+              <Line
+                dot={false}
+                strokeWidth="3"
+                dataKey="mean"
+                stroke="#32ad61"
+                activeDot={{ r: 5 }}
+              />
 
-            <Line dot={false} strokeWidth="1" dataKey="low" stroke="#0f14ba" />
-          </LineChart>
-        </ResponsiveContainer>
+              <Line
+                dot={false}
+                strokeWidth="1"
+                dataKey="low"
+                stroke="#0f14ba"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        )}
       </Box>
     </>
   );
