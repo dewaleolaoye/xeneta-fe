@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/aria-role */
 import { useState } from 'react';
 import { Box, HStack } from '@chakra-ui/react';
 import { FaExchangeAlt } from 'react-icons/fa';
@@ -22,9 +23,15 @@ const Ports = () => {
   return (
     <Box>
       <HStack spacing="32px" alignItems="center" mb="24px">
-        <Select onChange={handleChange} name="origin" value={port.origin}>
+        <Select
+          onChange={handleChange}
+          name="origin"
+          value={port.origin}
+          label="origin"
+          role="combobox"
+        >
           {data?.map(({ code, name }, index) => (
-            <option value={code} key={index}>
+            <option value={code} key={index} role="options">
               {name} {code}
             </option>
           ))}
@@ -38,9 +45,11 @@ const Ports = () => {
           onChange={handleChange}
           name="destination"
           value={port.destination}
+          label="destination"
+          role="contentinfo"
         >
           {data?.map(({ code, name }, index) => (
-            <option value={code} key={index}>
+            <option value={code} key={index} role="list">
               {name} {code}
             </option>
           ))}
